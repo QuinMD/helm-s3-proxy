@@ -1,6 +1,6 @@
-module github.com/cresta/helm-s3-proxy
+module github.com/QuinMD/helm-s3-proxy
 
-go 1.16
+go 1.22
 
 require (
 	github.com/DataDog/datadog-go v4.8.0+incompatible // indirect
@@ -9,11 +9,11 @@ require (
 	github.com/aws/aws-sdk-go v1.27.0
 	github.com/cresta/gotracing v0.2.2
 	github.com/cresta/httpsimple v0.0.2
-	github.com/cresta/magehelper v0.0.58
+	github.com/cresta/magehelper v0.1.0
 	github.com/cresta/zapctx v0.0.2
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/mux v1.8.0
-	github.com/magefile/mage v1.12.1 // indirect
+	github.com/magefile/mage v1.15.0 // indirect
 	github.com/sethvargo/go-githubactions v0.5.3 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/tinylib/msgp v1.1.6 // indirect
@@ -29,4 +29,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-exclude github.com/go-logr/logr v1.0.0
+exclude github.com/go-logr/logr v1.4.1
