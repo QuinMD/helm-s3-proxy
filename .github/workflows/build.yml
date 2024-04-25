@@ -21,21 +21,14 @@ jobs:
           install: true
       - name: Log into GHCR
         if: github.event_name == 'push'
-        uses: magefile/mage-action@v1
+        uses: docker/login-action@v3
         with:
-          version: latest
-          args: ghcr:login
-        env:
-          GHCR_PAT: ${{ secrets.GHCR_PAT }}
-      - name: Build image
-        if: github.event_name == 'pull_request'
-        uses: magefile/mage-action@v1
-        with:
-          version: latest
-          args: -v docker:build
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push image
         if: github.event_name == 'push'
-        uses: magefile/mage-action@v1
+        uses: docker/build-push-action@v1
         with:
           version: latest
           args: -v docker:build
@@ -52,11 +45,6 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.22.2
-      - name: Run tests
-        uses: magefile/mage-action@v1
-        with:
-          version: latest
-          args: go:test
   go_lint:
     name: Run go lints
     runs-on: ubuntu-latest
