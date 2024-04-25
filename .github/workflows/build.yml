@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: Build
-    needs: [go_lint, go_test, hadolint]
+    needs: [go_test, hadolint]
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
