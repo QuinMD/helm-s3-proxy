@@ -32,6 +32,7 @@ jobs:
         with:
           version: latest
           args: -v docker:build
+          platforms: linux/amd64,linux/arm64
         env:
           DOCKER_PUSH_REMOTE_CACHE: true
           DOCKER_PUSH: true

@@ -1,4 +1,4 @@
-FROM arm64v8/golang:1.22.2-bullseye AS builder
+FROM golang:1.22.2-bullseye AS builder
 # hadolint ignore=DL3008
 RUN apt update && \
     apt install -y --no-install-recommends \
