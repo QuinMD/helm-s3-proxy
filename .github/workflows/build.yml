@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: QuinMD/helm-s3-proxy:latest
+          tags: ghcr.io/QuinMD/helm-s3-proxy:latest
           platforms: linux/amd64,linux/arm64
   go_test:
     name: Run go tests
