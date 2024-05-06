@@ -4,7 +4,6 @@ linters:
     - depguard
 
   enable:
-    - depguard
     - dupl
     - errcheck
     - gochecknoinits
