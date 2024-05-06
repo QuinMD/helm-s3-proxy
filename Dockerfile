@@ -21,7 +21,7 @@ ARG TARGETOS TARGETARCH
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o helm-s3-proxy
 
 FROM scratch
-LABEL org.opencontainers.image.source https://github.com/cresta/helm-s3-proxy
+LABEL org.opencontainers.image.source https://github.com/quinmd/helm-s3-proxy
 # Import from builder.
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
