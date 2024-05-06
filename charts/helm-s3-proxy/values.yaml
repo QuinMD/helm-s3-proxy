@@ -16,7 +16,7 @@ tracer: ""
 replicaCount: 1
 
 image:
-  repository: ghcr.io/QuinMD/helm-s3-proxy
+  repository: ghcr.io/quinmd/helm-s3-proxy
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

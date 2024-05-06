@@ -1,3 +1,6 @@
+# Use ARG to accept the TARGETARCH variable from the build context
+ARG TARGETARCH
+
 FROM golang:1.22.2-bullseye AS builder
 # hadolint ignore=DL3008
 RUN apt update && \
@@ -11,13 +14,13 @@ ENV USER=appuser
 ENV UID=1000
 RUN groupadd -r --gid ${UID} ${USER} && useradd --uid ${UID} -m --no-log-init -g ${USER} ${USER}
 
-
-COPY go.mod /work
-COPY go.sum /work
+COPY go.mod go.sum /work/
 RUN go mod download
 RUN go mod verify
 COPY . /work
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build
+
+# Use the TARGETARCH build argument to specify the architecture
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o helm-s3-proxy
 
 FROM scratch
 LABEL org.opencontainers.image.source https://github.com/cresta/helm-s3-proxy
@@ -27,7 +30,7 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 
-# Copy our static executable
+# Copy the static executable
 COPY --from=builder /work/helm-s3-proxy /helm-s3-proxy
 # Use an unprivileged user.
 USER appuser:appuser
