@@ -1,7 +1,4 @@
-# Use ARG to accept the TARGETARCH variable from the build context
-ARG TARGETARCH
-
-FROM golang:1.22.2-bullseye AS builder
+FROM --platform=${BUILDPLATFORM} golang:1.22.2-bullseye AS builder
 # hadolint ignore=DL3008
 RUN apt update && \
     apt install -y --no-install-recommends \
@@ -20,7 +17,8 @@ RUN go mod verify
 COPY . /work
 
 # Use the TARGETARCH build argument to specify the architecture
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o helm-s3-proxy
+ARG TARGETOS TARGETARCH
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o helm-s3-proxy
 
 FROM scratch
 LABEL org.opencontainers.image.source https://github.com/cresta/helm-s3-proxy
