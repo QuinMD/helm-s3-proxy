@@ -25,17 +25,14 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ github.token }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push image
         if: github.event_name == 'push'
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: latest
+          tags: QuinMD/helm-s3-proxy:latest
           platforms: linux/amd64,linux/arm64
-        env:
-          DOCKER_PUSH_REMOTE_CACHE: true
-          DOCKER_PUSH: true
   go_test:
     name: Run go tests
     runs-on: ubuntu-latest
