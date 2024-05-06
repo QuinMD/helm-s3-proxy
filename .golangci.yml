@@ -1,7 +1,10 @@
 linters:
   disable-all: true
+
+  disable:
+    - depguard
+
   enable:
-    - deadcode
     - depguard
     - dupl
     - errcheck
@@ -11,38 +14,16 @@ linters:
     - gocyclo
     - gofmt
     - goimports
-    - golint
     - gosec
     - gosimple
     - govet
     - ineffassign
-    - interfacer
-    - maligned
-    - megacheck
     - misspell
     - nakedret
     - prealloc
-    - scopelint
     - staticcheck
-    - structcheck
     - stylecheck
     - typecheck
     - unconvert
     - unparam
     - unused
-    - varcheck
-
-linters-settings:
-  depguard:
-    rules:
-      main:
-        allow:
-          - github.com/QuinMD/helm-s3-proxy/internal/handler
-          - github.com/aws/aws-sdk-go/aws/session
-          - github.com/aws/aws-sdk-go/service/s3/s3manager
-          - github.com/aws/aws-sdk-go/service/sts
-          - github.com/cresta/gotracing
-          - github.com/cresta/gotracing/datadog
-          - github.com/cresta/httpsimple
-          - github.com/cresta/zapctx
-          - github.com/gorilla/mux
