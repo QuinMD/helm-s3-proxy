@@ -30,8 +30,8 @@ jobs:
         if: github.event_name == 'push'
         uses: docker/build-push-action@v5
         with:
-          version: latest
-          args: -v docker:build
+          push: true
+          tags: latest
           platforms: linux/amd64,linux/arm64
         env:
           DOCKER_PUSH_REMOTE_CACHE: true
