@@ -1,7 +1,7 @@
 FROM --platform=${BUILDPLATFORM} golang:1.22.2-bullseye AS builder
 # hadolint ignore=DL3008
-RUN apt update && \
-    apt install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     xz-utils zip && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /work
