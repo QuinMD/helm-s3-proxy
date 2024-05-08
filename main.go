@@ -8,10 +8,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/QuinMD/helm-s3-proxy/internal/handler"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/aws/aws-sdk-go/service/sts"
-	"github.com/cresta/helm-s3-proxy/internal/handler"
 
 	"github.com/cresta/gotracing"
 	"github.com/cresta/gotracing/datadog"
