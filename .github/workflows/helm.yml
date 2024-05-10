@@ -53,5 +53,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push chart to GHCR
-        run: helm push ./helm-s3-proxy* oci://ghcr.io/quinmd/charts/helm-s3-proxy
+        run: helm push ./helm-s3-proxy* oci://ghcr.io/quinmd/charts
 
