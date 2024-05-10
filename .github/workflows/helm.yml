@@ -33,7 +33,7 @@ jobs:
       - name: Helm package
         run: helm package charts/helm-s3-proxy
       - name: Run install
-        run: helm install helm-s3-proxy helm-s3-proxy.tgz
+        run: helm install helm-s3-proxy helm-s3-proxy*
       - name: Remove helm chart
         run:  helm uninstall helm-s3-proxy
   release:
